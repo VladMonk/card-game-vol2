@@ -1,0 +1,8 @@
+.start-button {
+  outline: none;
+  border: 0;
+  border-radius: 10px;
+  padding: 16px 32px;
+  background: #a3a3a3;
+  color: #f5f4eb;
+}

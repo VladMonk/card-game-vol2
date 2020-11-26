@@ -1,0 +1,15 @@
+.background-input-name {
+  padding: 8px;
+  margin: auto;
+}
+input {
+  background-color: #a3a3a3;
+  color: #f5f4eb;
+  outline: none;
+  border: 0px
+}
+
+.input {
+  text-align: center;
+  border-radius: 10px;
+}
