@@ -8,7 +8,7 @@ function Welcome(props) {
   localStorage.removeItem('name')
   let diff = null
 
-  function handleBlur(e) {
+  function handleChange(e) {
     let elem = e.target
 
     if (elem.className === 'input') {
@@ -16,13 +16,7 @@ function Welcome(props) {
       if (elem.value === '') {
         localStorage.removeItem('name')
       }
-    }
-  }
-
-  function handleChange(e) {
-    let elem = e.target
-
-    if (elem.type === 'radio') {
+    } else if (elem.type === 'radio') {
       diff = elem.value
     }
   }
@@ -45,7 +39,7 @@ function Welcome(props) {
   }
 
   return (
-    <div onBlur = {handleBlur} onChange = {handleChange} onClick = {handleClick}>
+    <div onChange = {handleChange} onClick = {handleClick}>
       <div className = 'setting-menu'>
         <InputName />
         <Switch />
