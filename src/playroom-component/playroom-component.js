@@ -1,7 +1,8 @@
+import React, { useState, useEffect } from 'react';
 import './playroom-component.css'
 import Card from '../card-component/card-component'
 
-let pathArr = [
+const pathArr = [
   'armor',
   'black',
   'blue',
@@ -36,6 +37,14 @@ let pathArr = [
 let prevElem = null
 let clickCount = null
 
+let cardArr = shuffle( (() => {
+  let arr = []
+  for (let i = 0; i < 30; i++) {
+    arr.push(<Card key = {i} id = {i}/>)
+  }
+  return arr;
+})() )
+
 function shuffle(arr) {
   let shuffleArr = arr
   for (let i = shuffleArr.length - 1; i > 0; i--) {
@@ -56,20 +65,28 @@ function setBack(...elems) {
 
 function removeElem(...elems) {
   elems.forEach((elem) => {
-    elem.remove()
+    elem.closest('div').remove()
   });
 
 }
 
+function InfoBar(props) {
+  return (
+    <div className = 'info-bar'>
+      <div className = 'player-name'>{localStorage.getItem('name')}</div>
+      <div className = 'moves'></div>
+    </div>
+  )
+}
+
 function Play(props) {
 
-  let cardArr = shuffle( (() => {
-    let arr = []
-    for (let i = 0; i < 30; i++) {
-      arr.push(<Card key = {i} id = {i}/>)
-    }
-    return arr;
-  })() )
+  const [moves, setMove] = useState(0)
+  const Increment = () => setMove(moves + 1)
+
+  useEffect( () => {
+    document.querySelector('.moves').innerHTML = moves
+  } )
 
   function handleClick(e) {
 
@@ -83,15 +100,17 @@ function Play(props) {
           elem.setAttribute('src', path)
           clickCount += 1
 
-          if (prevElem) {      
+          if (prevElem) {
             if (prevElem.getAttribute('src') === path) {
               setTimeout(() => {
                 removeElem(elem, prevElem)
+                Increment()
                 prevElem = clickCount = null
               }, 500)
             } else {
               setTimeout(() => {
                 setBack(elem, prevElem)
+                Increment()
                 prevElem = clickCount = null
               }, 2000)
             }
@@ -104,8 +123,11 @@ function Play(props) {
   }
 
   return (
-    <div className = 'playroom' onClick = {handleClick}>
-      {cardArr}
+    <div>
+      <InfoBar />
+      <div className = 'playroom' onClick = {handleClick}>
+        {cardArr}
+      </div>
     </div>
   );
 }
