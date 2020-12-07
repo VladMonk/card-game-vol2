@@ -4,9 +4,11 @@ import Switch from '../switch-component/switch-component'
 import Button from '../button-component/button-component'
 
 
+let diff = null
+
 function Welcome(props) {
   localStorage.removeItem('name')
-  let diff = null
+  localStorage.removeItem('diff')
 
   function handleChange(e) {
     let elem = e.target
@@ -17,7 +19,8 @@ function Welcome(props) {
         localStorage.removeItem('name')
       }
     } else if (elem.type === 'radio') {
-      diff = elem.value
+      diff = Number(elem.value)
+      localStorage.setItem('diff', diff);
     }
   }
 

@@ -1,9 +1,13 @@
 import './button-component.css'
+import {NavLink} from 'react-router-dom'
+import A from 'hookrouter'
 
 
 function Button() {
   return (
-    <button className = 'start-button'>Go</button>
+    <div>
+      <button className = 'start-button'><a href = '/playroom'>GO</a></button>
+    </div>
   );
 }
 

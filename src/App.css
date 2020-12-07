@@ -1,5 +1,6 @@
 .background {
-  background-color: #f0bd71
+  background-color: #f0bd71;
+  height: 100vh;
 }
 
 * {

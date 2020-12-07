@@ -2,48 +2,71 @@ import React, { useState, useEffect } from 'react';
 import './playroom-component.css'
 import Card from '../card-component/card-component'
 
+
 const pathArr = [
   'armor',
-  'black',
-  'blue',
-  'brown',
-  'dgreen',
-  'fox',
-  'green',
-  'idk',
-  'orange',
-  'pink',
-  'purple',
-  'red',
-  'suit',
-  'white',
-  'yellow',
   'armor',
   'black',
+  'black',
+  'blue',
   'blue',
   'brown',
+  'brown',
+  'dgreen',
   'dgreen',
   'fox',
+  'fox',
+  'green',
   'green',
   'idk',
+  'idk',
+  'orange',
   'orange',
   'pink',
+  'pink',
+  'purple',
   'purple',
   'red',
+  'red',
+  'suit',
   'suit',
   'white',
+  'white',
+  'yellow',
   'yellow'
 ]
 let prevElem = null
 let clickCount = null
+let matches = null
+let diff = localStorage.getItem('diff')
 
 let cardArr = shuffle( (() => {
   let arr = []
-  for (let i = 0; i < 30; i++) {
+  for (let i = 0; i < diff; i++) {
     arr.push(<Card key = {i} id = {i}/>)
   }
   return arr;
 })() )
+// let cardArrs = createArrs()
+//
+// function createArrs() {
+//   let diffs = [20,24,30]
+//   let arrs = []
+//   let j = 0
+//   while (j < 3) {
+//     arrs.push(
+//       shuffle( (() => {
+//         let arr = []
+//         for (let i = 0; i < diffs[j]; i++) {
+//           arr.push(<Card key = {i} id = {i}/>)
+//         }
+//         return arr;
+//       })() )
+//     )
+//     j++
+//   }
+//   return arrs
+// }
 
 function shuffle(arr) {
   let shuffleArr = arr
@@ -72,7 +95,7 @@ function removeElem(...elems) {
 
 function InfoBar(props) {
   return (
-    <div className = 'info-bar'>
+    <div className = 'info-bar basic'>
       <div className = 'player-name'>{localStorage.getItem('name')}</div>
       <div className = 'moves'></div>
     </div>
@@ -81,6 +104,10 @@ function InfoBar(props) {
 
 function Play(props) {
 
+  let diff = localStorage.getItem('diff')
+  console.log(diff);
+
+  // const [cardCount, setCardCount] = useState(localStorage.diff)
   const [moves, setMove] = useState(0)
   const Increment = () => setMove(moves + 1)
 
@@ -106,6 +133,12 @@ function Play(props) {
                 removeElem(elem, prevElem)
                 Increment()
                 prevElem = clickCount = null
+
+                matches++
+                if (matches === diff/2) {
+                 alert('end game')
+                }
+
               }, 500)
             } else {
               setTimeout(() => {
@@ -125,7 +158,7 @@ function Play(props) {
   return (
     <div>
       <InfoBar />
-      <div className = 'playroom' onClick = {handleClick}>
+      <div className = 'playroom basic' onClick = {handleClick}>
         {cardArr}
       </div>
     </div>

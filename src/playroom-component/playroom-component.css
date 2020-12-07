@@ -1,8 +1,32 @@
 .playroom {
    align-items: center;
-   min-height: 100%;
-   background-color: #faf6d4;
-   width: 74%;
-   margin: auto;
-   border-radius: 10px; 
  }
+
+.info-bar {
+  text-align: center;
+}
+
+.player-name{
+  display: inline-flex;
+  padding: 16px;
+}
+
+.moves{
+  display: inline-flex;
+  padding: 16px;
+}
+
+.basic {
+  min-height: 100%;
+  background-color: #faf6d4;
+  width:80%;
+  overflow: hidden;
+  margin: auto;
+  border-radius: 10px;
+}
+
+.background-playroom {
+  height: auto;
+  background-color: #f0bd71;
+  
+}
