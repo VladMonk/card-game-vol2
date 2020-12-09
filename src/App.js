@@ -1,32 +1,26 @@
 import './App.css';
 import './welcome-component/welcome-component.css'
+import React from 'react'
 import Welcome from './welcome-component/welcome-component'
-import {useRoutes, A} from 'hookrouter'
-import Routes from './routes'
-import {Route, BrowserRouter, Switch} from 'react-router-dom'
+import Play from './playroom-component/playroom-component'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+// const Play = React.lazy(() => import('./playroom-component/playroom-component'))
+
 
 
 function App() {
-  const routeResult = useRoutes(Routes)
-  console.log(routeResult);
-  // return (
-  //   <BrowserRouter>
-  //     <div className = 'background' id = 'bg'>
-  //       <Switch>
-  //         <Route path = '/playroom' component = {Play}/>
-  //         <Route exact path = '/' component = {Welcome}/>
-  //       </Switch>
-  //
-  //     </div>
-  //   </BrowserRouter>
-  // );
+
   return (
-    // routeResult
-    <div>
-      <Welcome />
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route exac path = '/' component = {Welcome}/>
+        <Route path = '/playroom' component = {Play}/>
+
+      </Switch>
+    </BrowserRouter>
   );
 }
+
 
 
 export default App;

@@ -31,7 +31,9 @@ function Welcome(props) {
     if (elem.className === 'start-button') {
       if (diff) {
         if (name) {
-          console.log(`Player ${name} start ${diff} game`);
+          console.log('navigate');
+
+          // navigate('/playroom')
         } else {
           alert('Enter ur name')
         }

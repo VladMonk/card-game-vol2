@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
 import './playroom-component.css'
+import React, { useState, useEffect } from 'react'
 import Card from '../card-component/card-component'
 
 
@@ -39,7 +39,6 @@ let prevElem = null
 let clickCount = null
 let matches = null
 let diff = localStorage.getItem('diff')
-
 let cardArr = shuffle( (() => {
   let arr = []
   for (let i = 0; i < diff; i++) {
@@ -47,26 +46,7 @@ let cardArr = shuffle( (() => {
   }
   return arr;
 })() )
-// let cardArrs = createArrs()
-//
-// function createArrs() {
-//   let diffs = [20,24,30]
-//   let arrs = []
-//   let j = 0
-//   while (j < 3) {
-//     arrs.push(
-//       shuffle( (() => {
-//         let arr = []
-//         for (let i = 0; i < diffs[j]; i++) {
-//           arr.push(<Card key = {i} id = {i}/>)
-//         }
-//         return arr;
-//       })() )
-//     )
-//     j++
-//   }
-//   return arrs
-// }
+
 
 function shuffle(arr) {
   let shuffleArr = arr
@@ -104,10 +84,6 @@ function InfoBar(props) {
 
 function Play(props) {
 
-  let diff = localStorage.getItem('diff')
-  console.log(diff);
-
-  // const [cardCount, setCardCount] = useState(localStorage.diff)
   const [moves, setMove] = useState(0)
   const Increment = () => setMove(moves + 1)
 
@@ -116,7 +92,6 @@ function Play(props) {
   } )
 
   function handleClick(e) {
-
     if (clickCount < 2) {
       let elem = e.target
 
